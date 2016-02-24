@@ -7,6 +7,16 @@ Rails.application.routes.draw do
       resources :items,         only: [:index, :show], defaults: { format: 'json' }
       resources :merchants,     only: [:index, :show], defaults: { format: 'json' }
       resources :transactions,  only: [:index, :show], defaults: { format: 'json' }
+
+      # resources :transactions do
+      #   resources :comments, only:
+      #   get '/find' => '/find#show'
+      #   get '/find_all' => '/find#index'
+      #
+      # end
+      # 
+
+
     end
   end
 end
