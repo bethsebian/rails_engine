@@ -1,6 +1,7 @@
 module ItemsHelper
 	def self.finder(params, query_hash)
 		deslug_query(query_hash)
+		
 		if query_hash.present? && params[:id] == "find"
 			Item.find_by(query_hash)
 		elsif query_hash.present? && params[:id] == "find_all"
