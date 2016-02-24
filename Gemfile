@@ -19,7 +19,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'database_cleaner'
-  gem "factory_girl_rails", :require => false
+  gem "factory_girl_rails", "~> 4.0", :require => false
 end
 
 group :development do
