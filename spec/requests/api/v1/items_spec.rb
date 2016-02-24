@@ -12,10 +12,10 @@ RSpec.describe "Items API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['name']).to eq(i_3.name)
-    expect(json.last['description']).to eq(i_3.description)
-    expect(json.last['unit_price']).to eq((i_3.unit_price.to_f/100).to_s)
-		expect(json.last['merchant_id']).to eq(i_3.merchant_id)
+    expect(json.last['name']).to eq(i_1.name)
+    expect(json.last['description']).to eq(i_1.description)
+    expect(json.last['unit_price']).to eq((i_1.unit_price.to_f/100).to_s)
+		expect(json.last['merchant_id']).to eq(i_1.merchant_id)
   end
 
 	it 'sends details on one item when passed ID' do
@@ -57,12 +57,12 @@ RSpec.describe "Items API" do
     get "/api/v1/items/find?name=#{i_4.name}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_4.id)
-    expect(json["id"]).to_not eq(i_5.id)
-		expect(json['name']).to eq(i_4.name)
-    expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
-		expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json["id"]).to eq(i_5.id)
+    expect(json["id"]).to_not eq(i_4.id)
+		expect(json['name']).to eq(i_5.name)
+    expect(json['description']).to eq(i_5.description)
+    expect(json['unit_price']).to eq((i_5.unit_price.to_f/100).to_s)
+		expect(json['merchant_id']).to eq(i_5.merchant_id)
   end
 
 	it 'sends details on item when passed NAME as param (case-insensitive)' do
@@ -82,7 +82,7 @@ RSpec.describe "Items API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(i_4.id)
+		expect(json.last['id']).to eq(i_2.id)
 	end
 
   it 'sends details on item when passed NAME with spaces as param' do
@@ -110,12 +110,12 @@ RSpec.describe "Items API" do
     get "/api/v1/items/find?description=#{i_4.description}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_4.id)
-    expect(json["id"]).to_not eq(i_5.id)
-		expect(json['name']).to eq(i_4.name)
-    expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
-		expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json["id"]).to eq(i_5.id)
+    expect(json["id"]).to_not eq(i_4.id)
+		expect(json['name']).to eq(i_5.name)
+    expect(json['description']).to eq(i_5.description)
+    expect(json['unit_price']).to eq((i_5.unit_price.to_f/100).to_s)
+		expect(json['merchant_id']).to eq(i_5.merchant_id)
   end
 
 	it 'sends details on item when passed DESCRIPTION as param (case-insensitive)' do
@@ -135,7 +135,7 @@ RSpec.describe "Items API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(i_4.id)
+		expect(json.last['id']).to eq(i_2.id)
 	end
 
 	it 'sends details on matching item when passed DESCRIPTION with spaces as param' do
@@ -175,12 +175,12 @@ RSpec.describe "Items API" do
     get "/api/v1/items/find?unit_price=#{i_4.unit_price}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_4.id)
-    expect(json["id"]).to_not eq(i_5.id)
-		expect(json['name']).to eq(i_4.name)
-    expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
-		expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json["id"]).to eq(i_5.id)
+    expect(json["id"]).to_not eq(i_4.id)
+		expect(json['name']).to eq(i_5.name)
+    expect(json['description']).to eq(i_5.description)
+    expect(json['unit_price']).to eq((i_5.unit_price.to_f/100).to_s)
+		expect(json['merchant_id']).to eq(i_5.merchant_id)
   end
 
 	it 'sends details on all matching items when passed UNIT_PRICE as param' do
@@ -189,7 +189,7 @@ RSpec.describe "Items API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(i_4.id)
+		expect(json.last['id']).to eq(i_2.id)
 	end
 
 	it 'sends details on transaction when passed MERCHANT_ID as param' do
@@ -209,12 +209,12 @@ RSpec.describe "Items API" do
     get "/api/v1/items/find?merchant_id=#{i_4.merchant_id}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_4.id)
-    expect(json["id"]).to_not eq(i_5.id)
-		expect(json['name']).to eq(i_4.name)
-    expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
-		expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json["id"]).to eq(i_5.id)
+    expect(json["id"]).to_not eq(i_4.id)
+		expect(json['name']).to eq(i_5.name)
+    expect(json['description']).to eq(i_5.description)
+    expect(json['unit_price']).to eq((i_5.unit_price.to_f/100).to_s)
+		expect(json['merchant_id']).to eq(i_5.merchant_id)
   end
 
 	it 'sends details on all matching items when passed MERCHANT_ID as param' do
@@ -223,7 +223,7 @@ RSpec.describe "Items API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(i_4.id)
+		expect(json.last['id']).to eq(i_2.id)
 	end
 
 	it 'sends details on random item when passed RANDOM' do

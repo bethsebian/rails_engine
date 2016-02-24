@@ -12,8 +12,8 @@ RSpec.describe "Customer API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['first_name']).to eq(c_3.first_name)
-    expect(json.last['last_name']).to eq(c_3.last_name)
+    expect(json.last['first_name']).to eq(c_1.first_name)
+    expect(json.last['last_name']).to eq(c_1.last_name)
   end
 
 	it 'sends details on one customer when passed ID' do
@@ -48,10 +48,10 @@ RSpec.describe "Customer API" do
     get "/api/v1/customers/find?first_name=#{c_2.first_name}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(c_2.id)
-    expect(json["id"]).to_not eq(c_4.id)
-    expect(json['first_name']).to eq(c_2.first_name)
-    expect(json['last_name']).to eq(c_2.last_name)
+    expect(json["id"]).to eq(c_4.id)
+    expect(json["id"]).to_not eq(c_2.id)
+    expect(json['first_name']).to eq(c_4.first_name)
+    expect(json['last_name']).to eq(c_4.last_name)
   end
 
   it 'sends details on customer when passed FIRST_NAME with spaces as param' do
@@ -77,7 +77,7 @@ RSpec.describe "Customer API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(c_4.id)
+		expect(json.last['id']).to eq(c_2.id)
 	end
 
 	it 'sends details on customer when passed LAST_NAME as param' do
@@ -94,10 +94,10 @@ RSpec.describe "Customer API" do
     get "/api/v1/customers/find?last_name=#{c_2.last_name}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(c_2.id)
-    expect(json["id"]).to_not eq(c_4.id)
-    expect(json['first_name']).to eq(c_2.first_name)
-    expect(json['last_name']).to eq(c_2.last_name)
+    expect(json["id"]).to eq(c_4.id)
+    expect(json["id"]).to_not eq(c_2.id)
+    expect(json['first_name']).to eq(c_4.first_name)
+    expect(json['last_name']).to eq(c_4.last_name)
   end
 
 	it 'sends details on customer when passed LAST_NAME as param (case-insensitive)' do
@@ -115,7 +115,7 @@ RSpec.describe "Customer API" do
 
     expect(response).to be_success
     expect(json.length).to eq(2)
-    expect(json.last['id']).to eq(c_4.id)
+    expect(json.last['id']).to eq(c_2.id)
   end
 
   it 'sends details on customer when passed LAST_NAME with spaces as param' do
