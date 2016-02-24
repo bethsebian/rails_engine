@@ -18,10 +18,10 @@ FactoryGirl.define do
 	end
 
 	factory :item do
-		sequence(:name) { |n| "First_#{n} Last_#{n}" }
+		sequence(:name)        { |n| "First_#{n} Last_#{n}" }
 		sequence(:description) { |n| "Lorem_#{n} ipsum_#{n} dolor_#{n} sit_#{n}..." }
-		unit_price
-		merchant_id
+		sequence(:unit_price)  { |n| n }
+		sequence(:merchant_id) { |n| n }
 	end
 
 	factory :merchant do
@@ -29,7 +29,7 @@ FactoryGirl.define do
 	end
 
 	factory :transaction do
-		sequence(:invoice_id) { |n| n + 1 }
+		sequence(:invoice_id)         { |n| n + 1 }
 		sequence(:credit_card_number) { |n| (n + 1234567890123455) }
 		result ["success", "failed"].sample
 	end
