@@ -1,10 +1,3 @@
----
-title: Rales Engine
-length: 1 week
-tags:
-type: project
----
-
 ## Project Description
 
 In this project, you will use Rails and ActiveRecord to build a JSON API which exposes the SalesEngine data schema.
