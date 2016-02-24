@@ -8,24 +8,24 @@ FactoryGirl.define do
 
 
 # INVOICE_ITEMS
-	factory :invoice_items do
+	factory :invoice_item do
 		item_id
 		invoice_id
-		sequence(:quantity) 	{ |n| "#{n}" }
+		sequence(:quantity) 	{ |n| n }
 		sequence(:unit_price) { |n| n * (1.01)}
 	end
 
 
 # INVOICES
-	factory :invoices do
-		customer_id
-		merchant_id
+	factory :invoice do
+		sequence(:customer_id) { |n| n }
+		sequence(:merchant_id) { |n| n }
 		status "shipped"
 	end
 
 
 # ITEMS
-	factory :items do
+	factory :item do
 		sequence(:name) { |n| "First_#{n} Last_#{n}" }
 		sequence(:description) { |n| "Lorem_#{n} ipsum_#{n} dolor_#{n} sit_#{n}..." }
 		unit_price
@@ -34,18 +34,18 @@ FactoryGirl.define do
 
 
 # MERCHANTS
-	factory :merchants do
+	factory :merchant do
 		sequence(:name) { |n| "M_First_#{n} M_Last_#{n}" }
 	end
 
 
 # TRANSACTIONS
-	factory :transactions do
+	factory :transaction do
 		invoice_id
 		sequence(:credit_card_number) { |n| (n + 1234567890123455) }
 		result ["success", "failed"].sample
 	end
-
+end
 
 
 #
