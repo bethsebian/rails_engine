@@ -63,6 +63,15 @@ RSpec.describe "Customer API" do
 		expect(json['last_name']).to eq(c_2.last_name)
 	end
 
+  it 'sends details on all matching customers when passed FIRST_NAME as param' do
+    c_4 = create(:customer, first_name: c_2.first_name)
+    get "/api/v1/customers/find_all?first_name=#{c_2.first_name}"
+
+		expect(response).to be_success
+		expect(json.length).to eq(2)
+		expect(json.last['id']).to eq(c_4.id)
+	end
+
 	it 'sends details on customer when passed LAST_NAME as param' do
     get "/api/v1/customers/find?last_name=#{c_2.last_name}"
 
@@ -91,6 +100,15 @@ RSpec.describe "Customer API" do
 		expect(json['first_name']).to eq(c_2.first_name)
 		expect(json['last_name']).to eq(c_2.last_name)
 	end
+
+  it 'sends details on all matching customers when passed LAST_NAME as param' do
+    c_4 = create(:customer, last_name: c_2.last_name)
+    get "/api/v1/customers/find_all?last_name=#{c_2.last_name}"
+
+    expect(response).to be_success
+    expect(json.length).to eq(2)
+    expect(json.last['id']).to eq(c_4.id)
+  end
 
   it 'sends details on random customer when passed RANDOM' do
     get "/api/v1/customers/random.json"
