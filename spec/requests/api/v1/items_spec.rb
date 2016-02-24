@@ -14,7 +14,7 @@ RSpec.describe "Items API" do
     expect(json.length).to eq(3)
     expect(json.last['name']).to eq(i_3.name)
     expect(json.last['description']).to eq(i_3.description)
-    expect(json.last['unit_price']).to eq(i_3.unit_price.to_f/100)
+    expect(json.last['unit_price']).to eq((i_3.unit_price.to_f/100).to_s)
 		expect(json.last['merchant_id']).to eq(i_3.merchant_id)
   end
 
@@ -25,7 +25,7 @@ RSpec.describe "Items API" do
 		expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
 	end
 
@@ -36,7 +36,7 @@ RSpec.describe "Items API" do
 		expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
 	end
 
@@ -47,7 +47,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
   end
 
@@ -61,7 +61,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to_not eq(i_5.id)
 		expect(json['name']).to eq(i_4.name)
     expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq(i_4.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
@@ -72,7 +72,7 @@ RSpec.describe "Items API" do
 		expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
 	end
 
@@ -100,7 +100,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
   end
 
@@ -114,7 +114,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to_not eq(i_5.id)
 		expect(json['name']).to eq(i_4.name)
     expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq(i_4.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
@@ -125,7 +125,7 @@ RSpec.describe "Items API" do
 		expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
 	end
 
@@ -146,7 +146,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to eq(i_4.id)
 		expect(json['name']).to eq(i_4.name)
     expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq(i_4.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
@@ -165,7 +165,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
   end
 
@@ -179,7 +179,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to_not eq(i_5.id)
 		expect(json['name']).to eq(i_4.name)
     expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq(i_4.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
@@ -199,7 +199,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to eq(i_2.id)
 		expect(json['name']).to eq(i_2.name)
     expect(json['description']).to eq(i_2.description)
-    expect(json['unit_price']).to eq(i_2.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_2.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_2.merchant_id)
   end
 
@@ -213,7 +213,7 @@ RSpec.describe "Items API" do
     expect(json["id"]).to_not eq(i_5.id)
 		expect(json['name']).to eq(i_4.name)
     expect(json['description']).to eq(i_4.description)
-    expect(json['unit_price']).to eq(i_4.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_4.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
@@ -234,7 +234,7 @@ RSpec.describe "Items API" do
 		expect(response).to be_success
 		expect(json['name']).to eq(i_random.name)
     expect(json['description']).to eq(i_random.description)
-    expect(json['unit_price']).to eq(i_random.unit_price.to_f/100)
+    expect(json['unit_price']).to eq((i_random.unit_price.to_f/100).to_s)
 		expect(json['merchant_id']).to eq(i_random.merchant_id)
 	end
 end
