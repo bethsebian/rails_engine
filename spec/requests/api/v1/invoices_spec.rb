@@ -112,7 +112,7 @@ RSpec.describe "Invoice API" do
     expect(json.last['status']).to eq(i_3.status)
   end
 
-  it 'sends details on multiple invoices when passed STATUS' do
+  it 'sends details on random invoice when passed RANDOM' do
     get "/api/v1/invoices/random.json"
 
     i_random = Invoice.find(json['id'])
