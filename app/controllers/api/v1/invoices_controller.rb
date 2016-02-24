@@ -7,7 +7,7 @@ class Api::V1::InvoicesController < ApplicationController
 	end
 
 	def show
-		@invoice = InvoicesHelper.finder(params, request.env["QUERY_STRING"])
+		@invoice = InvoicesHelper.finder(params, request.env["rack.request.query_hash"])
 		respond_with @invoice
 	end
 end
