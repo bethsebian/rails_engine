@@ -9,8 +9,8 @@ FactoryGirl.define do
 
 # INVOICE_ITEMS
 	factory :invoice_item do
-		item_id
-		invoice_id
+		sequence(:item_id) 		{ |n| n }
+		sequence(:invoice_id) { |n| n + 1 }
 		sequence(:quantity) 	{ |n| n }
 		sequence(:unit_price) { |n| n * (1.01)}
 	end
