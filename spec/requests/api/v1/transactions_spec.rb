@@ -12,9 +12,9 @@ RSpec.describe "Transaction API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['invoice_id']).to eq(t_3.invoice_id)
-    expect(json.last['credit_card_number']).to eq(t_3.credit_card_number.to_s)
-    expect(json.last['result']).to eq(t_3.result)
+    expect(json.last['invoice_id']).to eq(t_1.invoice_id)
+    expect(json.last['credit_card_number']).to eq(t_1.credit_card_number.to_s)
+    expect(json.last['result']).to eq(t_1.result)
   end
 
 	it 'sends details on one transaction when passed ID' do
@@ -52,11 +52,11 @@ RSpec.describe "Transaction API" do
     get "/api/v1/transactions/find?invoice_id=#{t_2.invoice_id}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(t_2.id)
-    expect(json["id"]).to_not eq(t_4.id)
-    expect(json['invoice_id']).to eq(t_2.invoice_id)
-		expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
-		expect(json['result']).to eq(t_2.result)
+    expect(json["id"]).to eq(t_4.id)
+    expect(json["id"]).to_not eq(t_2.id)
+    expect(json['invoice_id']).to eq(t_4.invoice_id)
+		expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
+		expect(json['result']).to eq(t_4.result)
   end
 
 	it 'sends details on all matching transactions when passed INVOICE_ID as param' do
@@ -66,7 +66,7 @@ RSpec.describe "Transaction API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(t_5.id)
+		expect(json.last['id']).to eq(t_4.id)
 	end
 
 	it 'sends details on transaction when passed CREDIT_CARD_NUMBER as param' do
@@ -84,11 +84,11 @@ RSpec.describe "Transaction API" do
     get "/api/v1/transactions/find?credit_card_number=#{t_2.credit_card_number}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(t_2.id)
-    expect(json["id"]).to_not eq(t_4.id)
-    expect(json['invoice_id']).to eq(t_2.invoice_id)
-		expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
-		expect(json['result']).to eq(t_2.result)
+    expect(json["id"]).to eq(t_4.id)
+    expect(json["id"]).to_not eq(t_2.id)
+    expect(json['invoice_id']).to eq(t_4.invoice_id)
+		expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
+		expect(json['result']).to eq(t_4.result)
   end
 
 	it 'sends details on all matching transactions when passed CREDIT_CARD_NUMBER as param' do
@@ -98,7 +98,7 @@ RSpec.describe "Transaction API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(t_5.id)
+		expect(json.last['id']).to eq(t_4.id)
 	end
 
 	it 'sends details on transaction when passed RESULT as param' do
@@ -114,15 +114,15 @@ RSpec.describe "Transaction API" do
 
   it 'sends details on first matching transaction when passed RESULT as param' do
     t_4 = create(:transaction, result: "test")
-		t_5 = create(:transaction, result: "test")
+		t_5 = create(:transaction, result: t_4.result)
     get "/api/v1/transactions/find?result=#{t_4.result}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(t_4.id)
-    expect(json["id"]).to_not eq(t_5.id)
-    expect(json['invoice_id']).to eq(t_4.invoice_id)
-		expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
-		expect(json['result']).to eq(t_4.result)
+    expect(json["id"]).to eq(t_5.id)
+    expect(json["id"]).to_not eq(t_4.id)
+    expect(json['invoice_id']).to eq(t_5.invoice_id)
+		expect(json['credit_card_number']).to eq(t_5.credit_card_number.to_s)
+		expect(json['result']).to eq(t_5.result)
   end
 
 	it 'sends details on transaction when passed RESULT as param (case-insensitive)' do
@@ -143,7 +143,7 @@ RSpec.describe "Transaction API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(t_5.id)
+		expect(json.last['id']).to eq(t_4.id)
 	end
 
   it 'sends details on transactions when passed RESULT with spaces as param' do

@@ -12,7 +12,7 @@ RSpec.describe "Items API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['name']).to eq(m_3.name)
+    expect(json.last['name']).to eq(m_1.name)
   end
 
 	it 'sends details on one merchant when passed ID' do
@@ -45,9 +45,9 @@ RSpec.describe "Items API" do
     get "/api/v1/merchants/find?name=#{m_4.name}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(m_4.id)
-    expect(json["id"]).to_not eq(m_5.id)
-		expect(json['name']).to eq(m_4.name)
+    expect(json["id"]).to eq(m_5.id)
+    expect(json["id"]).to_not eq(m_4.id)
+		expect(json['name']).to eq(m_5.name)
   end
 
 	it 'sends details on merchant when passed NAME as param (case-insensitive)' do
@@ -64,7 +64,7 @@ RSpec.describe "Items API" do
 
 		expect(response).to be_success
 		expect(json.length).to eq(2)
-		expect(json.last['id']).to eq(m_4.id)
+		expect(json.last['id']).to eq(m_2.id)
 	end
 
 	it 'sends details on matching merchant when passed NAME with spaces as param' do

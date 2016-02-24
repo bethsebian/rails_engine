@@ -12,9 +12,9 @@ RSpec.describe "Invoice API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['customer_id']).to eq(i_3.customer_id)
-    expect(json.last['merchant_id']).to eq(i_3.merchant_id)
-    expect(json.last['status']).to eq(i_3.status)
+    expect(json.last['customer_id']).to eq(i_1.customer_id)
+    expect(json.last['merchant_id']).to eq(i_1.merchant_id)
+    expect(json.last['status']).to eq(i_1.status)
   end
 
 	it 'sends details on one invoice when passed ID' do
@@ -52,11 +52,11 @@ RSpec.describe "Invoice API" do
     get "/api/v1/invoices/find?customer_id=#{i_2.customer_id}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_2.id)
-    expect(json["id"]).to_not eq(i_4.id)
-    expect(json['customer_id']).to eq(i_2.customer_id)
-    expect(json['merchant_id']).to eq(i_2.merchant_id)
-    expect(json['status']).to eq(i_2.status)
+    expect(json["id"]).to eq(i_4.id)
+    expect(json["id"]).to_not eq(i_2.id)
+    expect(json['customer_id']).to eq(i_4.customer_id)
+    expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json['status']).to eq(i_4.status)
   end
 
   it 'sends details on invoice when passed MERCHANT_ID as param' do
@@ -74,31 +74,29 @@ RSpec.describe "Invoice API" do
     get "/api/v1/invoices/find?merchant_id=#{i_2.merchant_id}"
 
     expect(response).to be_success
-    expect(json["id"]).to eq(i_2.id)
-    expect(json["id"]).to_not eq(i_4.id)
-    expect(json['customer_id']).to eq(i_2.customer_id)
-    expect(json['merchant_id']).to eq(i_2.merchant_id)
-    expect(json['status']).to eq(i_2.status)
+    expect(json["id"]).to eq(i_4.id)
+    expect(json["id"]).to_not eq(i_2.id)
+    expect(json['customer_id']).to eq(i_4.customer_id)
+    expect(json['merchant_id']).to eq(i_4.merchant_id)
+    expect(json['status']).to eq(i_4.status)
   end
 
   it 'sends details on first matching invoice when passed STATUS as param' do
     get "/api/v1/invoices/find?status=#{i_2.status}"
 
-    expect(i_1.status).to eq (i_2.status)
     expect(response).to be_success
-    expect(json["id"]).to eq(i_1.id)
-    expect(json["id"]).to_not eq(i_2.id)
-    expect(json['customer_id']).to eq(i_1.customer_id)
-    expect(json['merchant_id']).to eq(i_1.merchant_id)
-    expect(json['status']).to eq(i_1.status)
+    expect(json["id"]).to eq(i_3.id)
+    expect(json["id"]).to_not eq(i_1.id)
+    expect(json['customer_id']).to eq(i_3.customer_id)
+    expect(json['merchant_id']).to eq(i_3.merchant_id)
+    expect(json['status']).to eq(i_3.status)
   end
 
   it 'sends details on invoice when passed STATUS case-insensitive' do
     get "/api/v1/invoices/find?status=sHipped"
 
-    expect(i_1.status).to eq (i_2.status)
     expect(response).to be_success
-    expect(json["id"]).to eq(i_1.id)
+    expect(json["id"]).to eq(i_3.id)
   end
 
   it 'sends details on multiple invoices when passed STATUS' do
@@ -107,9 +105,9 @@ RSpec.describe "Invoice API" do
 
     expect(response).to be_success
     expect(json.length).to eq(3)
-    expect(json.last['customer_id']).to eq(i_3.customer_id)
-    expect(json.last['merchant_id']).to eq(i_3.merchant_id)
-    expect(json.last['status']).to eq(i_3.status)
+    expect(json.last['customer_id']).to eq(i_1.customer_id)
+    expect(json.last['merchant_id']).to eq(i_1.merchant_id)
+    expect(json.last['status']).to eq(i_1.status)
   end
 
   it 'sends details on invoice when passed STATUS with spaces as param' do
