@@ -13,7 +13,7 @@ RSpec.describe "Transaction API" do
     expect(response).to be_success
     expect(json.length).to eq(3)
     expect(json.last['invoice_id']).to eq(t_3.invoice_id)
-    expect(json.last['credit_card_number']).to eq(t_3.credit_card_number)
+    expect(json.last['credit_card_number']).to eq(t_3.credit_card_number.to_s)
     expect(json.last['result']).to eq(t_3.result)
   end
 
@@ -23,7 +23,7 @@ RSpec.describe "Transaction API" do
 		expect(response).to be_success
 		expect(json["id"]).to eq(t_2.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-    expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+    expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
     expect(json['result']).to eq(t_2.result)
 	end
 
@@ -33,7 +33,7 @@ RSpec.describe "Transaction API" do
     expect(response).to be_success
     expect(json["id"]).to eq(t_2.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-    expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+    expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
     expect(json['result']).to eq(t_2.result)
 	end
 
@@ -43,7 +43,7 @@ RSpec.describe "Transaction API" do
     expect(response).to be_success
     expect(json["id"]).to eq(t_2.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-    expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+    expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
 		expect(json['result']).to eq(t_2.result)
   end
 
@@ -55,7 +55,7 @@ RSpec.describe "Transaction API" do
     expect(json["id"]).to eq(t_2.id)
     expect(json["id"]).to_not eq(t_4.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-		expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+		expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
 		expect(json['result']).to eq(t_2.result)
   end
 
@@ -75,7 +75,7 @@ RSpec.describe "Transaction API" do
     expect(response).to be_success
     expect(json["id"]).to eq(t_2.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-    expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+    expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
 		expect(json['result']).to eq(t_2.result)
   end
 
@@ -87,7 +87,7 @@ RSpec.describe "Transaction API" do
     expect(json["id"]).to eq(t_2.id)
     expect(json["id"]).to_not eq(t_4.id)
     expect(json['invoice_id']).to eq(t_2.invoice_id)
-		expect(json['credit_card_number']).to eq(t_2.credit_card_number)
+		expect(json['credit_card_number']).to eq(t_2.credit_card_number.to_s)
 		expect(json['result']).to eq(t_2.result)
   end
 
@@ -108,7 +108,7 @@ RSpec.describe "Transaction API" do
     expect(response).to be_success
     expect(json["id"]).to eq(t_4.id)
     expect(json['invoice_id']).to eq(t_4.invoice_id)
-    expect(json['credit_card_number']).to eq(t_4.credit_card_number)
+    expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
 		expect(json['result']).to eq(t_4.result)
   end
 
@@ -121,7 +121,7 @@ RSpec.describe "Transaction API" do
     expect(json["id"]).to eq(t_4.id)
     expect(json["id"]).to_not eq(t_5.id)
     expect(json['invoice_id']).to eq(t_4.invoice_id)
-		expect(json['credit_card_number']).to eq(t_4.credit_card_number)
+		expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
 		expect(json['result']).to eq(t_4.result)
   end
 
@@ -132,7 +132,7 @@ RSpec.describe "Transaction API" do
 		expect(response).to be_success
 		expect(json["id"]).to eq(t_4.id)
 		expect(json['invoice_id']).to eq(t_4.invoice_id)
-		expect(json['credit_card_number']).to eq(t_4.credit_card_number)
+		expect(json['credit_card_number']).to eq(t_4.credit_card_number.to_s)
 		expect(json['result']).to eq(t_4.result)
 	end
 
@@ -161,7 +161,7 @@ RSpec.describe "Transaction API" do
 
 		expect(response).to be_success
 		expect(json['invoice_id']).to eq(t_random.invoice_id)
-		expect(json['credit_card_number']).to eq(t_random.credit_card_number)
+		expect(json['credit_card_number']).to eq(t_random.credit_card_number.to_s)
 		expect(json['result']).to eq(t_random.result)
 	end
 end

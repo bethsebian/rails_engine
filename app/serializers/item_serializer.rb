@@ -8,7 +8,7 @@ class ItemSerializer < ActiveModel::Serializer
              :updated_at
 
   def unit_price
-    self.object.unit_price.to_f / 100
+    (self.object.unit_price.to_f / 100).to_s
   end
 
 end

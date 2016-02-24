@@ -21,7 +21,7 @@ RSpec.describe "InvoiceItems API" do
     expect(json.last['item_id']).to eq(ii_7.item_id)
     expect(json.last['invoice_id']).to eq(ii_7.invoice_id)
     expect(json.last['quantity']).to eq(ii_7.quantity)
-		expect(json.last['unit_price']).to eq(ii_7.unit_price.to_f/100)
+		expect(json.last['unit_price']).to eq((ii_7.unit_price.to_f/100).to_s)
 
   end
 
@@ -33,7 +33,7 @@ RSpec.describe "InvoiceItems API" do
     expect(json['item_id']).to eq(ii_2.item_id)
     expect(json['invoice_id']).to eq(ii_2.invoice_id)
     expect(json['quantity']).to eq(ii_2.quantity)
-		expect(json['unit_price']).to eq(ii_2.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_2.unit_price.to_f/100).to_s)
 	end
 
   it 'sends details on invoice item when passed ID as param' do
@@ -44,7 +44,7 @@ RSpec.describe "InvoiceItems API" do
     expect(json['item_id']).to eq(ii_2.item_id)
     expect(json['invoice_id']).to eq(ii_2.invoice_id)
     expect(json['quantity']).to eq(ii_2.quantity)
-		expect(json['unit_price']).to eq(ii_2.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_2.unit_price.to_f/100).to_s)
 	end
 
   it 'sends details on first matching invoice when passed ITEM_ID as param' do
@@ -55,7 +55,7 @@ RSpec.describe "InvoiceItems API" do
     expect(json['item_id']).to eq(ii_2.item_id)
     expect(json['invoice_id']).to eq(ii_2.invoice_id)
     expect(json['quantity']).to eq(ii_2.quantity)
-		expect(json['unit_price']).to eq(ii_2.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_2.unit_price.to_f/100).to_s)
   end
 
 	it 'sends details on all matching invoices when passed ITEM_ID as param' do
@@ -75,7 +75,7 @@ RSpec.describe "InvoiceItems API" do
 		expect(json['item_id']).to eq(ii_1.item_id)
 		expect(json['invoice_id']).to eq(ii_1.invoice_id)
 		expect(json['quantity']).to eq(ii_1.quantity)
-		expect(json['unit_price']).to eq(ii_1.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_1.unit_price.to_f/100).to_s)
 	end
 
 	it 'sends details on all matching invoices when passed INVOICE_ID as param' do
@@ -95,7 +95,7 @@ RSpec.describe "InvoiceItems API" do
 		expect(json['item_id']).to eq(ii_1.item_id)
 		expect(json['invoice_id']).to eq(ii_1.invoice_id)
 		expect(json['quantity']).to eq(ii_1.quantity)
-		expect(json['unit_price']).to eq(ii_1.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_1.unit_price.to_f/100).to_s)
 	end
 
 	it 'sends details on all matching invoices when passed QUANTITY as param' do
@@ -107,18 +107,18 @@ RSpec.describe "InvoiceItems API" do
 	end
 
 	it 'sends details on first matching invoice when passed UNIT_PRICE as param' do
-		get "/api/v1/invoice_items/find?unit_price=#{ii_2.unit_price}"
+		get "/api/v1/invoice_items/find?unit_price=#{(ii_2.unit_price.to_f/100).to_s}"
 
 		expect(response).to be_success
 		expect(json['id']).to eq(ii_2.id)
 		expect(json['item_id']).to eq(ii_2.item_id)
 		expect(json['invoice_id']).to eq(ii_2.invoice_id)
 		expect(json['quantity']).to eq(ii_2.quantity)
-		expect(json['unit_price']).to eq(ii_2.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_2.unit_price.to_f/100).to_s)
 	end
 
 	it 'sends details on all matching invoices when passed UNIT_PRICE as param' do
-		get "/api/v1/invoice_items/find_all?unit_price=#{ii_2.unit_price}"
+		get "/api/v1/invoice_items/find_all?unit_price=#{(ii_2.unit_price.to_f/100).to_s}"
 
 		expect(response).to be_success
 		expect(json.length).to eq(1)
@@ -134,6 +134,6 @@ RSpec.describe "InvoiceItems API" do
 		expect(json['item_id']).to eq(ii_random.item_id)
 		expect(json['invoice_id']).to eq(ii_random.invoice_id)
 		expect(json['quantity']).to eq(ii_random.quantity)
-		expect(json['unit_price']).to eq(ii_random.unit_price.to_f/100)
+		expect(json['unit_price']).to eq((ii_random.unit_price.to_f/100).to_s)
   end
 end
