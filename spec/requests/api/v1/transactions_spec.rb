@@ -146,6 +146,14 @@ RSpec.describe "Transaction API" do
 		expect(json.last['id']).to eq(t_5.id)
 	end
 
+  it 'sends details on transactions when passed RESULT with spaces as param' do
+    t_4 = create(:transaction, result: "pretty bad")
+    get "/api/v1/transactions/find?result=pretty-bad"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(t_4.id)
+  end
+
 	it 'sends details on random transaction when passed RANDOM' do
 		get "/api/v1/transactions/random.json"
 

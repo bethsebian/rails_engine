@@ -85,6 +85,14 @@ RSpec.describe "Items API" do
 		expect(json.last['id']).to eq(i_4.id)
 	end
 
+  it 'sends details on item when passed NAME with spaces as param' do
+    i_4 = create(:item, name: "amazing pants")
+    get "/api/v1/items/find?name=amazing-pants"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(i_4.id)
+  end
+
 	it 'sends details on transaction when passed DESCRIPTION as param' do
 		get "/api/v1/items/find?description=#{i_2.description}"
 
@@ -142,6 +150,14 @@ RSpec.describe "Items API" do
 		expect(json['merchant_id']).to eq(i_4.merchant_id)
   end
 
+  it 'sends details on item when passed DESCRIPTION with spaces as param' do
+    i_4 = create(:item, description: "These are amazing pants")
+    get "/api/v1/items/find?description=these-are-amazing-pants"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(i_4.id)
+  end
+  
 	it 'sends details on transaction when passed UNIT_PRICE as param' do
 		get "/api/v1/items/find?unit_price=#{i_2.unit_price}"
 

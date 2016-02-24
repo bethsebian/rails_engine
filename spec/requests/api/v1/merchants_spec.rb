@@ -69,7 +69,7 @@ RSpec.describe "Items API" do
 
 	it 'sends details on matching merchant when passed NAME with spaces as param' do
     m_4 = create(:merchant, name: "This is a spaced name")
-    get "/api/v1/merchants/find?name=#{m_4.name}"
+    get "/api/v1/merchants/find?name=this-is-a-spaced-name"
 
 		expect(response).to be_success
 		expect(json["id"]).to eq(m_4.id)

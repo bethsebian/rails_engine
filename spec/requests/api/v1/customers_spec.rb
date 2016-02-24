@@ -54,6 +54,14 @@ RSpec.describe "Customer API" do
     expect(json['last_name']).to eq(c_2.last_name)
   end
 
+  it 'sends details on customer when passed FIRST_NAME with spaces as param' do
+    c_4 = create(:customer, first_name: "John Paul")
+    get "/api/v1/customers/find?first_name=john-paul"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(c_4.id)
+  end
+
 	it 'sends details on customer when passed FIRST_NAME as param (case-insensitive)' do
 		get "/api/v1/customers/find?first_name=#{c_2.first_name.upcase}"
 
@@ -108,6 +116,14 @@ RSpec.describe "Customer API" do
     expect(response).to be_success
     expect(json.length).to eq(2)
     expect(json.last['id']).to eq(c_4.id)
+  end
+
+  it 'sends details on customer when passed LAST_NAME with spaces as param' do
+    c_4 = create(:customer, last_name: "Smith III")
+    get "/api/v1/customers/find?last_name=smith-III"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(c_4.id)
   end
 
   it 'sends details on random customer when passed RANDOM' do

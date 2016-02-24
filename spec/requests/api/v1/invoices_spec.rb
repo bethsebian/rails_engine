@@ -112,6 +112,14 @@ RSpec.describe "Invoice API" do
     expect(json.last['status']).to eq(i_3.status)
   end
 
+  it 'sends details on invoice when passed STATUS with spaces as param' do
+    i_4 = create(:invoice, status: "rejected violently")
+    get "/api/v1/invoices/find?status=rejected-violently"
+
+    expect(response).to be_success
+    expect(json["id"]).to eq(i_4.id)
+  end
+
   it 'sends details on random invoice when passed RANDOM' do
     get "/api/v1/invoices/random.json"
 
