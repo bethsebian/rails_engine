@@ -43,7 +43,7 @@ RSpec.describe "Customer API" do
     expect(json['last_name']).to eq(c_2.last_name)
   end
 
-  it 'sends details on first matching invoice when passed FIRST_NAME as param' do
+  it 'sends details on first matching customer when passed FIRST_NAME as param' do
     c_4 = create(:customer, first_name: c_2.first_name)
     get "/api/v1/customers/find?first_name=#{c_2.first_name}"
 
@@ -72,7 +72,7 @@ RSpec.describe "Customer API" do
     expect(json['last_name']).to eq(c_2.last_name)
   end
 
-  it 'sends details on first matching invoice when passed LAST_NAME as param' do
+  it 'sends details on first matching customer when passed LAST_NAME as param' do
     c_4 = create(:customer, last_name: c_2.last_name)
     get "/api/v1/customers/find?last_name=#{c_2.last_name}"
 
@@ -92,16 +92,13 @@ RSpec.describe "Customer API" do
 	# 	expect(json['last_name']).to eq(c_2.last_name)
 	# end
 
+  it 'sends details on random customer when passed RANDOM' do
+    get "/api/v1/customers/random.json"
 
+    c_random = Customer.find(json['id'])
 
-  # it 'sends details on random invoice when passed RANDOM' do
-  #   get "/api/v1/invoices/random.json"
-	#
-  #   i_random = Invoice.find(json['id'])
-	#
-  #   expect(response).to be_success
-  #   expect(json['customer_id']).to eq(i_random.customer_id)
-  #   expect(json['merchant_id']).to eq(i_random.merchant_id)
-  #   expect(json['status']).to eq(i_random.status)
-  # end
+    expect(response).to be_success
+    expect(json['first_name']).to eq(c_random.first_name)
+    expect(json['last_name']).to eq(c_random.last_name)
+  end
 end
