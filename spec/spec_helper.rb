@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require 'request_helpers'
 
 RSpec.configure do |config|

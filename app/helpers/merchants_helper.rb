@@ -18,4 +18,10 @@ module MerchantsHelper
 			query_hash[query_hash.keys[0]] = query_hash.values[0].gsub(/-/, " ")
 		end
 	end
+
+	def self.analysis(params, request)
+		type = request.env["PATH_INFO"].split('/').last
+		qty = params["quantity"]
+		
+	end
 end
