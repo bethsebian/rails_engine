@@ -4,9 +4,11 @@ RSpec.describe "Single Merchants Business Intelligence API" do
 	it 'returns the total revenue for one merchant' do
 		m_1 = create(:merchant)
 		i_1 = create(:invoice, merchant_id: m_1.id)
+		t_1 = create(:transaction, invoice_id: i_1.id, result: 'success')
 		ii_1 = create(:invoice_item, invoice_id: i_1.id, unit_price: 911, quantity: 1)
 		ii_2 = create(:invoice_item, invoice_id: i_1.id, unit_price: 440, quantity: 2)
 		i_2 = create(:invoice, merchant_id: m_1.id)
+		t_2 = create(:transaction, invoice_id: i_2.id, result: 'success')
 		ii_3 = create(:invoice_item, invoice_id: i_2.id, unit_price: 470, quantity: 8)
 
 		get "/api/v1/merchants/#{m_1.id}/revenue"
