@@ -6,4 +6,3 @@ class Api::V1::Merchants::AnalysisController < ApplicationController
 		respond_with @merchants
 	end
 end
-

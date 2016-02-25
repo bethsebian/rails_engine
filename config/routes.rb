@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       resources :merchants, only: [:index, :show], defaults: { format: 'json' } do
         get '/items',         to: 'merchants/items#index', defaults: { format: 'json' }
         get '/invoices',      to: 'merchants/invoices#index', defaults: { format: 'json' }
+        get '/revenue',       to: 'merchants/revenues#show', defaults: { format: 'json' }
       end
 
       resources :transactions, only: [:index, :show], defaults: { format: 'json' } do
