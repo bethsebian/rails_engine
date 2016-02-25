@@ -4,6 +4,6 @@ class Merchant < ActiveRecord::Base
 	has_many :invoice_items, through: :invoices
 
 	def total_revenue
-		self.invoice_items.map { |ii| ii.total_cost }.reduce(:+)
+		invoices.successful_transactions.sum("unit_price * quantity").to_f
 	end
 end

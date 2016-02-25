@@ -25,8 +25,6 @@ Rails.application.routes.draw do
         get '/merchant',      to: 'items/merchants#show', defaults: { format: 'json' }
       end
 
-      get '/merchants/most_revenue',  to: 'merchants/analysis#index', defaults: { format: 'json' }
-
       resources :merchants, only: [:index, :show], defaults: { format: 'json' } do
         get '/items',         to: 'merchants/items#index', defaults: { format: 'json' }
         get '/invoices',      to: 'merchants/invoices#index', defaults: { format: 'json' }
@@ -36,14 +34,6 @@ Rails.application.routes.draw do
       resources :transactions, only: [:index, :show], defaults: { format: 'json' } do
         get '/invoice',       to: 'transactions/invoices#show', defaults: { format: 'json' }
       end
-
-      # resources :transactions do
-      #   resources :comments, only:
-      #   get '/find' => '/find#show'
-      #   get '/find_all' => '/find#index'
-      #
-      # end
-      #
     end
   end
 end

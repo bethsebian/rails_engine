@@ -3,8 +3,5 @@ class InvoiceItem < ActiveRecord::Base
 	belongs_to :item
 	belongs_to :invoice
 
-	def total_cost
-		quantity * unit_price
-	end
 end
 
