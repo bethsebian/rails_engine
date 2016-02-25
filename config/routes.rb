@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :api do
     namespace :v1 do
       resources :customers, only: [:index, :show], defaults: { format: 'json' } do
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
         get '/invoice_items', to: 'items/invoice_items#index', defaults: { format: 'json' }
         get '/merchant',      to: 'items/merchants#show', defaults: { format: 'json' }
       end
+
+      get '/merchants/most_revenue',  to: 'merchants/analysis#index', defaults: { format: 'json' }
 
       resources :merchants, only: [:index, :show], defaults: { format: 'json' } do
         get '/items',         to: 'merchants/items#index', defaults: { format: 'json' }
